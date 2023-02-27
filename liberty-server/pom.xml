@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  
+  <parent>
+    <groupId>com.ibm.websphere.samples</groupId>
+    <artifactId>libertyadminpot</artifactId>
+    <version>1.0-SNAPSHOT</version>
+  </parent>
+  
+  <artifactId>liberty-server</artifactId>
+  <packaging>liberty-assembly</packaging>
+  <name>Liberty Server</name>
+
+  <dependencies>
+    <dependency>
+      <groupId>com.ibm.websphere.samples</groupId>
+      <artifactId>plantsbywebsphere-ear</artifactId>
+      <version>1.0-SNAPSHOT</version>
+      <type>ear</type>
+    </dependency>
+    <dependency>
+      <groupId>com.ibm.websphere.samples</groupId>
+      <artifactId>whereami</artifactId>
+      <version>1.0-SNAPSHOT</version>
+      <type>war</type>
+    </dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>${junit.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>commons-httpclient</groupId>
+      <artifactId>commons-httpclient</artifactId>
+      <version>${commons.httpclient.version}</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <finalName>${liberty.server.name}_package_${liberty.runtime.version}</finalName>
+    <plugins>
+      <plugin>
+        <groupId>io.openliberty.tools</groupId>
+        <artifactId>liberty-maven-plugin</artifactId>
+        <version>${liberty.maven.plugin.version}</version>
+        <extensions>true</extensions>
+        <configuration>
+          <serverName>${liberty.server.name}</serverName>
+          <deployPackages>all</deployPackages>
+          <include>minify,runnable</include>
+          <runtimeArtifact>
+            <groupId>com.ibm.websphere.appserver.runtime</groupId>
+            <artifactId>wlp-kernel</artifactId>
+            <type>zip</type>
+          </runtimeArtifact>
+          <copyDependencies>
+            <dependencyGroup>
+              <location>../../shared/config/lib</location>
+              <stripVersion>true</stripVersion>
+              <dependency>
+                <groupId>com.ibm.db2</groupId>
+                <artifactId>jcc</artifactId>
+                <version>${com.ibm.db2.jcc.version}</version>
+              </dependency>
+              <dependency>
+                <groupId>com.ibm.db2</groupId>
+                <artifactId>db2jcc_license_cu</artifactId>
+                <version>1.0-SNAPSHOT</version>
+              </dependency>
+            </dependencyGroup>
+           </copyDependencies>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-failsafe-plugin</artifactId>
+        <version>${maven.failsafe.plugin.version}</version>
+        <executions>
+          <execution>
+            <goals>
+              <goal>integration-test</goal>
+              <goal>verify</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>${maven.compiler.plugin.version}</version>
+        <executions>
+          <execution>
+            <goals>
+              <goal>testCompile</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+</project>

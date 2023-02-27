@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>com.ibm.websphere.samples</groupId>
+    <artifactId>libertyadminpot</artifactId>
+    <version>1.0-SNAPSHOT</version>
+  </parent>
+  
+  <name>WhereAmI WAR</name>
+  <artifactId>whereami</artifactId>
+  <packaging>war</packaging>
+  
+  <dependencies>
+    <dependency>
+      <groupId>javax</groupId>
+      <artifactId>javaee-api</artifactId>
+      <version>${javaee.version}.0</version>
+      <scope>provided</scope>
+    </dependency>
+  </dependencies>
+  
+  <build>
+    <finalName>WhereAmI</finalName>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-war-plugin</artifactId>
+        <version>${maven.war.plugin.version}</version>
+        <configuration>
+          <packagingExcludes>pom.xml</packagingExcludes>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>

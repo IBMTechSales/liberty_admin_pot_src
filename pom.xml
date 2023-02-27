@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  
+  <parent>
+    <groupId>io.openliberty.tools</groupId>
+    <artifactId>liberty-maven-app-parent</artifactId>
+    <version>3.7.1</version>
+  </parent>
+  
+  <name>Liberty Administration PoT</name>
+  <groupId>com.ibm.websphere.samples</groupId>
+  <artifactId>libertyadminpot</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <packaging>pom</packaging>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
+    <javaee.version>6</javaee.version>
+    <liberty.maven.plugin.version>3.7.1</liberty.maven.plugin.version>
+    <liberty.server.name>pbwServerX</liberty.server.name>
+    <com.ibm.db2.jcc.version>11.5.8.0</com.ibm.db2.jcc.version>
+    <maven.war.plugin.version>3.3.2</maven.war.plugin.version>
+    <maven.ear.plugin.version>3.3.0</maven.ear.plugin.version>
+    <maven.failsafe.plugin.version>2.22.2</maven.failsafe.plugin.version>
+    <maven.compiler.plugin.version>3.10.1</maven.compiler.plugin.version>
+    <junit.version>4.13.2</junit.version>
+    <commons.httpclient.version>3.1</commons.httpclient.version>
+
+    <!--
+      These values get generated into liberty-plugin-variable-config.xml which is then
+      put into configDropins/overrides as part of the build.
+      These can be overridden when building with, for example:
+      mvn -DNoTxPBWDataSource_rhel9_baseNode01_tWAS_85515_server_DataSource_1673564702594_serverName=server0.gym.lan -DNoTxPBWDataSource_rhel9_baseNode01_tWAS_85515_server_DataSource_1673564702594_serverName=server0.gym.lan ...
+    -->
+    <liberty.var.httpEndpoint_host_2>*</liberty.var.httpEndpoint_host_2>
+    <liberty.var.httpEndpoint_port_2>9080</liberty.var.httpEndpoint_port_2>
+    <liberty.var.httpEndpoint_secure_port_2>9443</liberty.var.httpEndpoint_secure_port_2>
+    <liberty.var.NoTxPBWDataSource_rhel9_baseNode01_tWAS_85515_server_DataSource_1673564702594_databaseName>pbw</liberty.var.NoTxPBWDataSource_rhel9_baseNode01_tWAS_85515_server_DataSource_1673564702594_databaseName>
+    <liberty.var.NoTxPBWDataSource_rhel9_baseNode01_tWAS_85515_server_DataSource_1673564702594_portNumber>50000</liberty.var.NoTxPBWDataSource_rhel9_baseNode01_tWAS_85515_server_DataSource_1673564702594_portNumber>
+    <liberty.var.NoTxPBWDataSource_rhel9_baseNode01_tWAS_85515_server_DataSource_1673564702594_serverName>localhost</liberty.var.NoTxPBWDataSource_rhel9_baseNode01_tWAS_85515_server_DataSource_1673564702594_serverName>
+    <liberty.var.PBWDataSource_rhel9_baseNode01_tWAS_85515_server_DataSource_1673361478120_databaseName>pbw</liberty.var.PBWDataSource_rhel9_baseNode01_tWAS_85515_server_DataSource_1673361478120_databaseName>
+    <liberty.var.PBWDataSource_rhel9_baseNode01_tWAS_85515_server_DataSource_1673361478120_portNumber>50000</liberty.var.PBWDataSource_rhel9_baseNode01_tWAS_85515_server_DataSource_1673361478120_portNumber>
+    <liberty.var.PBWDataSource_rhel9_baseNode01_tWAS_85515_server_DataSource_1673361478120_serverName>localhost</liberty.var.PBWDataSource_rhel9_baseNode01_tWAS_85515_server_DataSource_1673361478120_serverName>
+    <liberty.var.rhel9_baseNode01_pbwuser_password>db2inst1-pwd</liberty.var.rhel9_baseNode01_pbwuser_password>
+    <liberty.var.rhel9_baseNode01_pbwuser_user>db2inst1</liberty.var.rhel9_baseNode01_pbwuser_user>
+    <liberty.var.NodeDefaultKeyStore_rhel9_baseNode01Cell_KeyStore_rhel9_baseNode01_1_location>plantsbywebsphereee6_ear_rhel9-baseNode01_NodeDefaultKeyStore_key.p12</liberty.var.NodeDefaultKeyStore_rhel9_baseNode01Cell_KeyStore_rhel9_baseNode01_1_location>
+    <liberty.var.NodeDefaultSSLSettings_rhel9_baseNode01Cell_SSLConfig_rhel9_baseNode01_1_sslProtocol>TLS</liberty.var.NodeDefaultSSLSettings_rhel9_baseNode01Cell_SSLConfig_rhel9_baseNode01_1_sslProtocol>
+    <liberty.var.NodeDefaultTrustStore_rhel9_baseNode01Cell_KeyStore_rhel9_baseNode01_2_location>plantsbywebsphereee6_ear_rhel9-baseNode01_NodeDefaultTrustStore_trust.p12</liberty.var.NodeDefaultTrustStore_rhel9_baseNode01Cell_KeyStore_rhel9_baseNode01_2_location>
+  </properties>
+  
+  <modules>
+    <module>plantsbywebsphere-util</module>
+    <module>plantsbywebsphere-war</module>
+    <module>plantsbywebsphere-ear</module>
+    <module>whereami</module>
+    <module>liberty-server</module>
+  </modules>
+</project>
