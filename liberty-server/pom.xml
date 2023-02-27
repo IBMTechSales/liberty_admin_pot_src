@@ -67,12 +67,15 @@
                 <version>${com.ibm.db2.jcc.version}</version>
               </dependency>
               <!--
+                mvn install:install-file -Dfile=$DIR/db2jcc_license_cu.jar -DgroupId=com.ibm.db2 -DartifactId=db2jcc_license_cu -Dversion=1.0-SNAPSHOT -Dpackaging=jar -DgeneratePom=true
+              -->
+              <!--
               <dependency>
                 <groupId>com.ibm.db2</groupId>
                 <artifactId>db2jcc_license_cu</artifactId>
                 <version>1.0-SNAPSHOT</version>
               </dependency>
-            -->
+              -->
             </dependencyGroup>
            </copyDependencies>
         </configuration>
