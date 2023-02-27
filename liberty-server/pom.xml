@@ -51,7 +51,11 @@
         <configuration>
           <serverName>${liberty.server.name}</serverName>
           <deployPackages>all</deployPackages>
-          <include>minify,runnable</include>
+          <include>all</include>
+          <features>
+            <feature>collectiveMember-1.0</feature>
+            <feature>sessionDatabase-1.0</feature>
+          </features>
           <runtimeArtifact>
             <groupId>com.ibm.websphere.appserver.runtime</groupId>
             <artifactId>wlp-kernel</artifactId>
