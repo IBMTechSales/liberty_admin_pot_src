@@ -37,6 +37,9 @@
       These can be overridden when building with, for example:
       mvn -DNoTxPBWDataSource_rhel9_baseNode01_tWAS_85515_server_DataSource_1673564702594_serverName=server0.gym.lan -DNoTxPBWDataSource_rhel9_baseNode01_tWAS_85515_server_DataSource_1673564702594_serverName=server0.gym.lan ...
     -->
+
+
+<!-- KLP: Remove for now and provide default values in the server.xml file 
     <liberty.var.httpEndpoint_host_2>*</liberty.var.httpEndpoint_host_2>
     <liberty.var.httpEndpoint_port_2>9080</liberty.var.httpEndpoint_port_2>
     <liberty.var.httpEndpoint_secure_port_2>9443</liberty.var.httpEndpoint_secure_port_2>
@@ -51,6 +54,8 @@
     <liberty.var.NodeDefaultKeyStore_rhel9_baseNode01Cell_KeyStore_rhel9_baseNode01_1_location>plantsbywebsphereee6_ear_rhel9-baseNode01_NodeDefaultKeyStore_key.p12</liberty.var.NodeDefaultKeyStore_rhel9_baseNode01Cell_KeyStore_rhel9_baseNode01_1_location>
     <liberty.var.NodeDefaultSSLSettings_rhel9_baseNode01Cell_SSLConfig_rhel9_baseNode01_1_sslProtocol>TLS</liberty.var.NodeDefaultSSLSettings_rhel9_baseNode01Cell_SSLConfig_rhel9_baseNode01_1_sslProtocol>
     <liberty.var.NodeDefaultTrustStore_rhel9_baseNode01Cell_KeyStore_rhel9_baseNode01_2_location>plantsbywebsphereee6_ear_rhel9-baseNode01_NodeDefaultTrustStore_trust.p12</liberty.var.NodeDefaultTrustStore_rhel9_baseNode01Cell_KeyStore_rhel9_baseNode01_2_location>
+ --> 
+  
   </properties>
   
   <modules>

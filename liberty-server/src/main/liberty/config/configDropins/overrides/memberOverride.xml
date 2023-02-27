@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<server description="new server">
+    <include location="${server.config.dir}/controller.xml" />
+
+  <httpEndpoint id="defaultHttpEndpoint"
+                  httpPort="9084"
+                  httpsPort="9446" />
+</server>
+
