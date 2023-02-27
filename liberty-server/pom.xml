@@ -41,7 +41,8 @@
   </dependencies>
 
   <build>
-    <finalName>${liberty.server.name}_package_${liberty.runtime.version}</finalName>
+    <finalName>${liberty.runtime.version}-${liberty.server.name}</finalName>
+<!-- <finalName>${liberty.server.name}_package_${liberty.runtime.version}</finalName> -->
     <plugins>
       <plugin>
         <groupId>io.openliberty.tools</groupId>
