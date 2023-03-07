@@ -314,4 +314,8 @@ public class Inventory implements Cloneable, java.io.Serializable
 		this.backOrder = backOrder;
 	}
 
+	@Override
+	public String toString() {
+		return super.toString() + " { id: " + getID() + ", name: " + getName() + "}";
+	}
 }

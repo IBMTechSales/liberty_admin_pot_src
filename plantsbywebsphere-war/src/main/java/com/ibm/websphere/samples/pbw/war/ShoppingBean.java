@@ -24,7 +24,10 @@ import java.util.LinkedList;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.context.ExternalContext;
@@ -45,6 +48,7 @@ import com.ibm.websphere.samples.pbw.jpa.Inventory;
 @Named("shopping")
 @SessionScoped
 public class ShoppingBean implements Serializable {
+	private static final Logger LOG = Logger.getLogger(ShoppingBean.class.getCanonicalName());
 	private static final long serialVersionUID = 1L;
 	private static final String ACTION_CART = "cart";
 	private static final String ACTION_PRODUCT = "product";
@@ -85,11 +89,33 @@ public class ShoppingBean implements Serializable {
 		Map<String, String> requestParams =
 			externalContext.getRequestParameterMap();
 
-		this.product = new ProductBean (this.catalog.getItemInventory
+		ProductBean productBean = new ProductBean (this.catalog.getItemInventory
 				(requestParams.get ("itemID")));
+		if (LOG.isLoggable(Level.INFO)) {
+			LOG.info("ShoppingBean.performProductDetail setting product to " + productBean);
+		}
+		this.product = productBean;
 
 		return ShoppingBean.ACTION_PRODUCT;
 	}
+	
+	@PostConstruct
+    public void init() {
+		if (LOG.isLoggable(Level.INFO)) {
+			LOG.info("ShoppingBean.init called with current product: " + this.product);
+			FacesContext facesContext = FacesContext.getCurrentInstance();
+			if (facesContext != null) {
+				ExternalContext externalContext = facesContext.getExternalContext();
+				if (externalContext != null) {
+					Map<String, String> requestParams =
+							externalContext.getRequestParameterMap();
+					if (requestParams != null) {
+						LOG.info("ShoppingBean.init request itemID: " + requestParams.get("itemID"));
+					}
+				}
+			}
+		}
+    }
 
 	public String performRecalculate () {
 		
@@ -185,5 +211,20 @@ public class ShoppingBean implements Serializable {
 			 shoppingList.add(new ShoppingItem(i));
 		 }
 		 return shoppingList;
+	 }
+	 
+	 public String getPriceInfo() {
+		 if (this.product != null) {
+			 String category = this.product.getCategoryName();
+			 if ("Accessories".equals(category)) {
+				 try {
+					Thread.sleep(5000);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+			 }
+			 return this.product.getPrice();
+		 }
+		 return null;
 	 }
 }
