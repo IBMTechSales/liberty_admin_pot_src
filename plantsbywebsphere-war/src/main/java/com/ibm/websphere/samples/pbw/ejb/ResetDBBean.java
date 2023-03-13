@@ -25,6 +25,7 @@ import java.util.Vector;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
+import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
@@ -43,7 +44,7 @@ public class ResetDBBean {
 	private CatalogMgr catalog;
 	@EJB
 	private CustomerMgr customer;
-	@EJB
+	@Inject
 	private ShoppingCartBean cart;
 	@EJB
 	private BackOrderMgr backOrderStock;
