@@ -102,7 +102,7 @@ public class ShoppingBean implements Serializable {
 	@PostConstruct
     public void init() {
 		if (LOG.isLoggable(Level.INFO)) {
-			LOG.info("ShoppingBean.init called with current product: " + this.product);
+			//LOG.info("ShoppingBean.init called with current product: " + this.product);
 			FacesContext facesContext = FacesContext.getCurrentInstance();
 			if (facesContext != null) {
 				ExternalContext externalContext = facesContext.getExternalContext();
