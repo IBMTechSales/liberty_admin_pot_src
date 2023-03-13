@@ -92,7 +92,7 @@ public class ShoppingBean implements Serializable {
 		ProductBean productBean = new ProductBean (this.catalog.getItemInventory
 				(requestParams.get ("itemID")));
 		if (LOG.isLoggable(Level.INFO)) {
-			LOG.info("ShoppingBean.performProductDetail setting product to " + productBean);
+			//LOG.info("ShoppingBean.performProductDetail setting product to " + productBean);
 		}
 		this.product = productBean;
 
@@ -110,7 +110,7 @@ public class ShoppingBean implements Serializable {
 					Map<String, String> requestParams =
 							externalContext.getRequestParameterMap();
 					if (requestParams != null) {
-						LOG.info("ShoppingBean.init request itemID: " + requestParams.get("itemID"));
+						//LOG.info("ShoppingBean.init request itemID: " + requestParams.get("itemID"));
 					}
 				}
 			}
