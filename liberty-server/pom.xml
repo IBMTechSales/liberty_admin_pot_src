@@ -56,6 +56,8 @@
           <features>
             <feature>collectiveMember-1.0</feature>
             <feature>sessionDatabase-1.0</feature>
+            <feature>monitor-1.0</feature>
+            <feature>requestTiming-1.0</feature>
           </features>
           <runtimeArtifact>
             <groupId>com.ibm.websphere.appserver.runtime</groupId>
