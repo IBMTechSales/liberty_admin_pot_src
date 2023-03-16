@@ -4,7 +4,8 @@
 
   <httpEndpoint id="defaultHttpEndpoint"
                   httpPort="9084"
-                  httpsPort="9446" />
+                  httpsPort="9446"
+                  host="*" />
 				  
 <!--KLP: Ensure http session data for the PBW, WhereAmI do not overwrite the JSESSIONID cookie to the same location -->                  
    <httpSession useContextRootAsCookiePath="true" />        			  
